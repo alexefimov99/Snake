@@ -30,7 +30,12 @@ void Setup()
 
 void Draw()
 {
-	system("cls");
+	HANDLE hCon;
+	COORD cPos;
+	hCon = GetStdHandle(STD_OUTPUT_HANDLE);
+	cPos.Y = 0;
+	cPos.X = 0;
+	SetConsoleCursorPosition(hCon, cPos);
 	for (int i = 0; i < height; i++)
 	{
 		for (int j = 0; j < width; j++)
@@ -166,6 +171,7 @@ int main()
 		Input();
 		Logic();
 		cout << endl << "score: " << score;
+		Sleep(100);
 	}
 
 	return 0;
