@@ -114,6 +114,13 @@ void Input()
 
 void Logic()
 {
+	if (x == foodX && foodY == y)
+	{
+		foodX = rand() % (width - 2) + 1;
+		foodY = rand() % (height - 2) + 1;
+		score += 10;
+		nTail++;
+	}
 	int prevX = tailX[0];
 	int prevY = tailY[0];
 	int prev2X, prev2Y;
@@ -127,6 +134,13 @@ void Logic()
 		tailY[i] = prevY;
 		prevX = prev2X;
 		prevY = prev2Y;
+
+		if (tailX[i] == foodX && tailY[i] == foodY)
+		{
+			cout << "x";
+			foodX = rand() % (width - 2) + 1;
+			foodY = rand() % (height - 2) + 1;
+		}
 	}
 
 	switch (dir)
@@ -152,13 +166,10 @@ void Logic()
 	for (int k = 0; k < nTail; k++)
 		if (tailX[k] == x && tailY[k] == y)
 			GameOver = true;
-
-	if (x == foodX && foodY == y)
+	if (nTail + 1 == (width - 2)*(height - 2))
 	{
-		foodX = rand() % (width - 2) + 1;
-		foodY = rand() % (height - 2) + 1;
-		score += 10;
-		nTail++;
+		cout << endl << "You WIN!!!";
+		exit(0);
 	}
 }
 
