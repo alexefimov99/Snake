@@ -73,37 +73,32 @@ void Draw()
 void Input()
 {
 	if (_kbhit())
-		switch (_getch())
+		switch (toupper(_getch()))
 		{
-		case'a':
 		case'A':
 			if (dir == RIGHT)
 				dir = RIGHT;
 			else
 				dir = LEFT;
 			break;
-		case'w':
 		case'W':
 			if (dir == DOWN)
 				dir = DOWN;
 			else
 				dir = UP;
 			break;
-		case'd':
 		case'D':
 			if (dir == LEFT)
 				dir = LEFT;
 			else
 				dir = RIGHT;
 			break;
-		case's':
 		case'S':
 			if (dir == UP)
 				dir = UP;
 			else
 				dir = DOWN;
 			break;
-		case'q':
 		case'Q':
 			GameOver = true;
 			break;
@@ -182,7 +177,7 @@ int main()
 		Input();
 		Logic();
 		cout << endl << "score: " << score;
-		Sleep(100);
+		Sleep(50);
 	}
 
 	return 0;
